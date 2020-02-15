@@ -66,6 +66,10 @@ class GameModel {
     }
 
     public func check(answer: String) -> AnswerStatus {
+        if state != .running {
+            return .unknown
+        }
+
         guard possibleAnswers.contains(answer) else {
             return .unknown
         }

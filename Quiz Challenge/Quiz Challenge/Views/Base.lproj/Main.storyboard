@@ -25,10 +25,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWe-tP-a5X">
                                 <rect key="frame" x="16" y="141.5" width="343" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Insert Word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eqc-64-L2q">
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Insert Word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eqc-64-L2q">
                                         <rect key="frame" x="16" y="16" width="311" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartInsertDeleteType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="j1N-lp-aQ7"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" name="entryBackground"/>
@@ -88,7 +91,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwb-pI-JAZ">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwb-pI-JAZ">
                                         <rect key="frame" x="16" y="73" width="343" height="48"/>
                                         <color key="backgroundColor" name="accent"/>
                                         <constraints>
@@ -103,6 +106,25 @@
                                                 <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="start:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J4j-gg-Lf8"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sat-7f-qdk" userLabel="Reset">
+                                        <rect key="frame" x="16" y="73" width="343" height="48"/>
+                                        <color key="backgroundColor" name="accent"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" name="accentContrast"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fyB-Rv-gdH"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vw-Aa-3V0" userLabel="Bottom Anchor">
                                         <rect key="frame" x="0.0" y="137" width="375" height="0.0"/>
@@ -115,12 +137,16 @@
                                 <color key="backgroundColor" name="panelBackground"/>
                                 <constraints>
                                     <constraint firstItem="3Q1-Fv-z6N" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eDQ-Kt-ONT" secondAttribute="trailing" id="0X4-8b-QcW"/>
+                                    <constraint firstItem="sat-7f-qdk" firstAttribute="centerX" secondItem="dwb-pI-JAZ" secondAttribute="centerX" id="561-KR-gPF"/>
                                     <constraint firstItem="7vw-Aa-3V0" firstAttribute="centerX" secondItem="AMJ-Si-F6e" secondAttribute="centerX" id="DaN-Nm-Vtu"/>
                                     <constraint firstItem="eDQ-Kt-ONT" firstAttribute="top" secondItem="AMJ-Si-F6e" secondAttribute="topMargin" id="Jf9-Rs-Eag"/>
+                                    <constraint firstItem="sat-7f-qdk" firstAttribute="centerY" secondItem="dwb-pI-JAZ" secondAttribute="centerY" id="ZJz-K4-FJa"/>
                                     <constraint firstItem="dwb-pI-JAZ" firstAttribute="top" secondItem="3Q1-Fv-z6N" secondAttribute="bottom" constant="16" id="ZVQ-uL-tYs"/>
                                     <constraint firstItem="7vw-Aa-3V0" firstAttribute="width" secondItem="AMJ-Si-F6e" secondAttribute="width" id="c5U-mN-gNP"/>
                                     <constraint firstItem="eDQ-Kt-ONT" firstAttribute="leading" secondItem="dwb-pI-JAZ" secondAttribute="leading" id="fHo-ac-iqP"/>
+                                    <constraint firstItem="sat-7f-qdk" firstAttribute="height" secondItem="dwb-pI-JAZ" secondAttribute="height" id="gL0-qb-muX"/>
                                     <constraint firstItem="dwb-pI-JAZ" firstAttribute="trailing" secondItem="3Q1-Fv-z6N" secondAttribute="trailing" id="jrl-Wa-M1Y"/>
+                                    <constraint firstItem="sat-7f-qdk" firstAttribute="width" secondItem="dwb-pI-JAZ" secondAttribute="width" id="l3k-na-GGF"/>
                                     <constraint firstItem="dwb-pI-JAZ" firstAttribute="top" secondItem="eDQ-Kt-ONT" secondAttribute="bottom" constant="16" id="m1c-Zk-2eP"/>
                                     <constraint firstItem="3Q1-Fv-z6N" firstAttribute="top" secondItem="AMJ-Si-F6e" secondAttribute="topMargin" id="qcN-KM-hou"/>
                                 </constraints>
@@ -152,9 +178,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="answerEntry" destination="eqc-64-L2q" id="RWA-tn-mqR"/>
                         <outlet property="answersCount" destination="eDQ-Kt-ONT" id="ElQ-HS-QWm"/>
                         <outlet property="bottomPanelPositionConstraint" destination="oGO-uc-fF2" id="hqN-7G-hWg"/>
                         <outlet property="question" destination="TFl-or-Lwi" id="0WN-nc-YbO"/>
+                        <outlet property="resetButton" destination="sat-7f-qdk" id="0Qv-Ut-92k"/>
+                        <outlet property="startButton" destination="dwb-pI-JAZ" id="sII-ZI-1FO"/>
                         <outlet property="timeRemaining" destination="3Q1-Fv-z6N" id="biG-dI-YBq"/>
                     </connections>
                 </viewController>
