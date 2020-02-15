@@ -52,15 +52,15 @@
                                 <rect key="frame" x="16" y="199.5" width="343" height="451.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="response" id="Ove-gl-c47">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="45.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="response" id="Ove-gl-c47" customClass="ResponseTableViewCell" customModule="Quiz_Challenge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ove-gl-c47" id="p6I-M2-g2h">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="45.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Final" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nec-hE-gDT">
-                                                    <rect key="frame" x="12" y="12" width="319" height="21.5"/>
+                                                    <rect key="frame" x="12" y="12" width="319" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -73,8 +73,14 @@
                                                 <constraint firstItem="nec-hE-gDT" firstAttribute="leading" secondItem="p6I-M2-g2h" secondAttribute="leading" constant="12" id="nHK-zs-KD8"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="responseLabel" destination="nec-hE-gDT" id="wVW-Ns-7eY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ihD-Rd-WpR"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMJ-Si-F6e" userLabel="Bottom Panel">
                                 <rect key="frame" x="0.0" y="530" width="375" height="137"/>
@@ -180,10 +186,12 @@
                     <connections>
                         <outlet property="answerEntry" destination="eqc-64-L2q" id="RWA-tn-mqR"/>
                         <outlet property="answersCount" destination="eDQ-Kt-ONT" id="ElQ-HS-QWm"/>
+                        <outlet property="bottomPanel" destination="AMJ-Si-F6e" id="rtr-Ru-zL1"/>
                         <outlet property="bottomPanelPositionConstraint" destination="oGO-uc-fF2" id="hqN-7G-hWg"/>
                         <outlet property="question" destination="TFl-or-Lwi" id="0WN-nc-YbO"/>
                         <outlet property="resetButton" destination="sat-7f-qdk" id="0Qv-Ut-92k"/>
                         <outlet property="startButton" destination="dwb-pI-JAZ" id="sII-ZI-1FO"/>
+                        <outlet property="table" destination="iNI-qX-EXe" id="YjY-Fh-FlG"/>
                         <outlet property="timeRemaining" destination="3Q1-Fv-z6N" id="biG-dI-YBq"/>
                     </connections>
                 </viewController>

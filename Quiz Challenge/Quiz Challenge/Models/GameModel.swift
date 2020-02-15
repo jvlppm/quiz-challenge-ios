@@ -22,7 +22,9 @@ class GameModel {
     public var data: GameData? {
         didSet {
             question = data?.question ?? ""
-            possibleAnswers = Set<String>(data?.answer ?? [])
+            let answers = data?.answer ?? []
+            let answersNormalized = answers.map({ $0.lowercased() })
+            possibleAnswers = Set<String>(answersNormalized)
             self.reset()
         }
     }
@@ -70,11 +72,13 @@ class GameModel {
             return .unknown
         }
 
-        guard possibleAnswers.contains(answer) else {
+        let checkAnswer = answer.lowercased()
+
+        guard possibleAnswers.contains(checkAnswer) else {
             return .unknown
         }
 
-        guard playerAnswers.insert(answer).inserted else {
+        guard playerAnswers.insert(checkAnswer).inserted else {
             return .repeated
         }
 

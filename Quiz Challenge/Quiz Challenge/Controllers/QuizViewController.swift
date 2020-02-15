@@ -8,8 +8,7 @@
 
 import UIKit
 
-class QuizViewController: UIViewController, UITextFieldDelegate {
-
+class QuizViewController: UIViewController {
     @IBOutlet weak var bottomPanelPositionConstraint: NSLayoutConstraint!
     var keyboardSizeListener: KeyboardSizeListener!
     var loadingControl: LoadingControl!
@@ -17,16 +16,20 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
     var gameModel = GameModel()
 
     @IBOutlet weak var question: UILabel!
+    @IBOutlet weak var table: UITableView!
     @IBOutlet weak var answerEntry: UITextField!
     @IBOutlet weak var answersCount: UILabel!
     @IBOutlet weak var timeRemaining: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var bottomPanel: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomPanel.frame.height, right: 0)
+        table.scrollIndicatorInsets = table.contentInset
         loadingControl = LoadingControl.create(for: view)
         keyboardSizeListener = KeyboardSizeListener(self, selector: #selector(onKeyboardUpdate))
         loadGameData()
@@ -69,6 +72,8 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         self.answerEntry.isEnabled = gameModel.state == .running
         self.startButton.isHidden = gameModel.state != .stopped
         self.resetButton.isHidden = gameModel.state == .stopped
+
+        self.table.reloadData()
     }
 
     func reloadAnswersCount() {
@@ -84,9 +89,20 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         self.timeRemaining.text = String(format: "%02d:%02d", minutes, seconds)
     }
 
+    @objc func onKeyboardUpdate(height: CGFloat) {
+
+        bottomPanelPositionConstraint.constant = height
+        view.layoutIfNeeded()
+    }
+}
+
+extension QuizViewController : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let sourceText = textField.text!
         let inputText = sourceText.replacingCharacters(in: Range(range, in: sourceText)!, with: string)
+
+        table.beginUpdates()
+        defer { table.endUpdates() }
 
         let response = gameModel.check(answer: inputText)
         if response != .correct {
@@ -94,18 +110,23 @@ class QuizViewController: UIViewController, UITextFieldDelegate {
         }
 
         reloadAnswersCount()
-
         answerEntry.text = ""
+        table.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
         return false
-    }
-
-    @objc func onKeyboardUpdate(height: CGFloat) {
-
-        bottomPanelPositionConstraint.constant = height
-        view.layoutIfNeeded()
-
-        //yourTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
-        //yourTextView.scrollIndicatorInsets = yourTextView.contentInset
     }
 }
 
+extension QuizViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return gameModel.lastAnswers.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = table.dequeueReusableCell(withIdentifier: "response", for: indexPath)
+        if let cell = cell as? ResponseTableViewCell {
+            let item = gameModel.lastAnswers[indexPath.row]
+            cell.configure(answer: item)
+        }
+        return cell
+    }
+}
