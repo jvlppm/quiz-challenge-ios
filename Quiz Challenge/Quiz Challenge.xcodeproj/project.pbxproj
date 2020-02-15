@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CF4B167323F7862F00935001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167223F7862F00935001 /* AppDelegate.swift */; };
 		CF4B167523F7862F00935001 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167423F7862F00935001 /* SceneDelegate.swift */; };
-		CF4B167723F7862F00935001 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167623F7862F00935001 /* ViewController.swift */; };
+		CF4B167723F7862F00935001 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167623F7862F00935001 /* QuizViewController.swift */; };
 		CF4B167A23F7862F00935001 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4B167823F7862F00935001 /* Main.storyboard */; };
 		CF4B167C23F7863400935001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF4B167B23F7863400935001 /* Assets.xcassets */; };
 		CF4B167F23F7863400935001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4B167D23F7863400935001 /* LaunchScreen.storyboard */; };
@@ -38,7 +38,7 @@
 		CF4B166F23F7862F00935001 /* Quiz Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4B167223F7862F00935001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF4B167423F7862F00935001 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CF4B167623F7862F00935001 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF4B167623F7862F00935001 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		CF4B167923F7862F00935001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF4B167B23F7863400935001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF4B167E23F7863400935001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,6 +76,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF38769D23F844DB00C35E2D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF4B167623F7862F00935001 /* QuizViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CF38769E23F844E700C35E2D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF4B167D23F7863400935001 /* LaunchScreen.storyboard */,
+				CF4B167823F7862F00935001 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CF4B166623F7862F00935001 = {
 			isa = PBXGroup;
 			children = (
@@ -99,12 +116,11 @@
 		CF4B167123F7862F00935001 /* Quiz Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				CF38769E23F844E700C35E2D /* Views */,
+				CF38769D23F844DB00C35E2D /* Controllers */,
 				CF4B167223F7862F00935001 /* AppDelegate.swift */,
 				CF4B167423F7862F00935001 /* SceneDelegate.swift */,
-				CF4B167623F7862F00935001 /* ViewController.swift */,
-				CF4B167823F7862F00935001 /* Main.storyboard */,
 				CF4B167B23F7863400935001 /* Assets.xcassets */,
-				CF4B167D23F7863400935001 /* LaunchScreen.storyboard */,
 				CF4B168023F7863400935001 /* Info.plist */,
 			);
 			path = "Quiz Challenge";
@@ -259,7 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF4B167723F7862F00935001 /* ViewController.swift in Sources */,
+				CF4B167723F7862F00935001 /* QuizViewController.swift in Sources */,
 				CF4B167323F7862F00935001 /* AppDelegate.swift in Sources */,
 				CF4B167523F7862F00935001 /* SceneDelegate.swift in Sources */,
 			);
