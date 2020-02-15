@@ -17,26 +17,28 @@ enum AnswerStatus {
 }
 
 class GameModel {
-    let GameDuration: TimeInterval = 300
+    static let GameDuration: TimeInterval = 300
 
-    public let question: String
-    public let possibleAnswers: Set<String>
+    public var data: GameData? {
+        didSet {
+            question = data?.question ?? ""
+            possibleAnswers = Set<String>(data?.answer ?? [])
+            self.reset()
+        }
+    }
+
+    private(set) var question = ""
+    private(set) var possibleAnswers = Set<String>()
 
     private(set) var state = GameState.stopped
-    private(set) var remainingTime: TimeInterval
+    private(set) var remainingTime = GameModel.GameDuration
 
     private(set) var playerAnswers = Set<String>()
     private(set) var lastAnswers = [String]()
 
     var playerWon: Bool {
+        guard possibleAnswers.count > 0 else { return false }
         return playerAnswers.count >= possibleAnswers.count
-    }
-
-    init (data: GameData) {
-        self.question = data.question
-        self.possibleAnswers = Set<String>(data.answers)
-
-        self.remainingTime = GameDuration
     }
 
     public func start() {
@@ -45,7 +47,7 @@ class GameModel {
 
     public func reset() {
         self.state = .stopped
-        self.remainingTime = GameDuration
+        self.remainingTime = GameModel.GameDuration
         self.playerAnswers.removeAll()
         self.lastAnswers = []
     }

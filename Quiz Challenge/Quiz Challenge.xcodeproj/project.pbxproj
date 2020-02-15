@@ -10,6 +10,10 @@
 		CF3E9CB223F865020087A55C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E9CB123F865020087A55C /* GameModel.swift */; };
 		CF3E9CB523F865AA0087A55C /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E9CB423F865AA0087A55C /* GameData.swift */; };
 		CF3E9CB823F870460087A55C /* KeyboardSizeListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E9CB723F870460087A55C /* KeyboardSizeListener.swift */; };
+		CF3E9CBA23F874B40087A55C /* LoadingControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3E9CB923F874B40087A55C /* LoadingControl.xib */; };
+		CF3E9CBC23F8795A0087A55C /* LoadingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E9CBB23F8795A0087A55C /* LoadingControl.swift */; };
+		CF3E9CBE23F8887F0087A55C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E9CBD23F8887F0087A55C /* ApiClient.swift */; };
+		CF3E9CC223F88CE60087A55C /* RequestGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E9CC123F88CE60087A55C /* RequestGameData.swift */; };
 		CF4B167323F7862F00935001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167223F7862F00935001 /* AppDelegate.swift */; };
 		CF4B167523F7862F00935001 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167423F7862F00935001 /* SceneDelegate.swift */; };
 		CF4B167723F7862F00935001 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167623F7862F00935001 /* QuizViewController.swift */; };
@@ -41,6 +45,10 @@
 		CF3E9CB123F865020087A55C /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		CF3E9CB423F865AA0087A55C /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		CF3E9CB723F870460087A55C /* KeyboardSizeListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSizeListener.swift; sourceTree = "<group>"; };
+		CF3E9CB923F874B40087A55C /* LoadingControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingControl.xib; sourceTree = "<group>"; };
+		CF3E9CBB23F8795A0087A55C /* LoadingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingControl.swift; sourceTree = "<group>"; };
+		CF3E9CBD23F8887F0087A55C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		CF3E9CC123F88CE60087A55C /* RequestGameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestGameData.swift; sourceTree = "<group>"; };
 		CF4B166F23F7862F00935001 /* Quiz Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4B167223F7862F00935001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF4B167423F7862F00935001 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				CF4B167623F7862F00935001 /* QuizViewController.swift */,
+				CF3E9CBB23F8795A0087A55C /* LoadingControl.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -95,6 +104,7 @@
 			children = (
 				CF4B167D23F7863400935001 /* LaunchScreen.storyboard */,
 				CF4B167823F7862F00935001 /* Main.storyboard */,
+				CF3E9CB923F874B40087A55C /* LoadingControl.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -111,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				CF3E9CB423F865AA0087A55C /* GameData.swift */,
+				CF3E9CC123F88CE60087A55C /* RequestGameData.swift */,
+				CF3E9CBD23F8887F0087A55C /* ApiClient.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -283,6 +295,7 @@
 			files = (
 				CF4B167F23F7863400935001 /* LaunchScreen.storyboard in Resources */,
 				CF4B167C23F7863400935001 /* Assets.xcassets in Resources */,
+				CF3E9CBA23F874B40087A55C /* LoadingControl.xib in Resources */,
 				CF4B167A23F7862F00935001 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,10 +322,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF4B167723F7862F00935001 /* QuizViewController.swift in Sources */,
+				CF3E9CC223F88CE60087A55C /* RequestGameData.swift in Sources */,
 				CF3E9CB523F865AA0087A55C /* GameData.swift in Sources */,
 				CF3E9CB223F865020087A55C /* GameModel.swift in Sources */,
+				CF3E9CBE23F8887F0087A55C /* ApiClient.swift in Sources */,
 				CF4B167323F7862F00935001 /* AppDelegate.swift in Sources */,
 				CF4B167523F7862F00935001 /* SceneDelegate.swift in Sources */,
+				CF3E9CBC23F8795A0087A55C /* LoadingControl.swift in Sources */,
 				CF3E9CB823F870460087A55C /* KeyboardSizeListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

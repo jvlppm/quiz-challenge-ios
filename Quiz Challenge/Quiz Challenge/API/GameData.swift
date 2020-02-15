@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GameData {
+struct GameData : Decodable {
     public var question: String
-    public var answers: [String]
+    public var answer: [String]
 }

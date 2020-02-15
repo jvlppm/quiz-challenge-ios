@@ -152,7 +152,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="answersCount" destination="eDQ-Kt-ONT" id="ElQ-HS-QWm"/>
                         <outlet property="bottomPanelPositionConstraint" destination="oGO-uc-fF2" id="hqN-7G-hWg"/>
+                        <outlet property="question" destination="TFl-or-Lwi" id="0WN-nc-YbO"/>
+                        <outlet property="timeRemaining" destination="3Q1-Fv-z6N" id="biG-dI-YBq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
