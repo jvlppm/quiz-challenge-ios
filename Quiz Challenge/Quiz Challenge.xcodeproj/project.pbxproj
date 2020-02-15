@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CF3E9CB223F865020087A55C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E9CB123F865020087A55C /* GameModel.swift */; };
 		CF3E9CB523F865AA0087A55C /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E9CB423F865AA0087A55C /* GameData.swift */; };
+		CF3E9CB823F870460087A55C /* KeyboardSizeListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E9CB723F870460087A55C /* KeyboardSizeListener.swift */; };
 		CF4B167323F7862F00935001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167223F7862F00935001 /* AppDelegate.swift */; };
 		CF4B167523F7862F00935001 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167423F7862F00935001 /* SceneDelegate.swift */; };
 		CF4B167723F7862F00935001 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B167623F7862F00935001 /* QuizViewController.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		CF3E9CB123F865020087A55C /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		CF3E9CB423F865AA0087A55C /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		CF3E9CB723F870460087A55C /* KeyboardSizeListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSizeListener.swift; sourceTree = "<group>"; };
 		CF4B166F23F7862F00935001 /* Quiz Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4B167223F7862F00935001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF4B167423F7862F00935001 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		CF3E9CB623F870270087A55C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CF3E9CB723F870460087A55C /* KeyboardSizeListener.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		CF4B166623F7862F00935001 = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +150,7 @@
 				CF3E9CB023F864BE0087A55C /* Models */,
 				CF38769E23F844E700C35E2D /* Views */,
 				CF38769D23F844DB00C35E2D /* Controllers */,
+				CF3E9CB623F870270087A55C /* Helpers */,
 				CF4B167223F7862F00935001 /* AppDelegate.swift */,
 				CF4B167423F7862F00935001 /* SceneDelegate.swift */,
 				CF4B167B23F7863400935001 /* Assets.xcassets */,
@@ -302,6 +313,7 @@
 				CF3E9CB223F865020087A55C /* GameModel.swift in Sources */,
 				CF4B167323F7862F00935001 /* AppDelegate.swift in Sources */,
 				CF4B167523F7862F00935001 /* SceneDelegate.swift in Sources */,
+				CF3E9CB823F870460087A55C /* KeyboardSizeListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
