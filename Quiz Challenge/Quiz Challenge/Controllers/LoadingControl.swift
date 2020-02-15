@@ -9,17 +9,27 @@
 import Foundation
 import UIKit
 
+protocol LoadingControlDelegate {
+    func onLoading(active: Bool)
+}
+
 @IBDesignable
 class LoadingControl : UIView {
     let nibName = "LoadingControl"
+    static var AnimationDuration: TimeInterval = 0.3
 
     @IBOutlet var view: LoadingControlView!
 
-    public static func create(for view: UIView) -> LoadingControl {
+    public var delegate: LoadingControlDelegate?
+
+    public static func create(for view: UIView, isActive: Bool = false, delegate: LoadingControlDelegate? = nil) -> LoadingControl {
         let control = LoadingControl(frame: view.bounds)
+        control.delegate = delegate
+        control.isActive = isActive
         view.addSubview(control)
         control.layoutMargins = view.layoutMargins
         control.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        delegate?.onLoading(active: isActive)
         return control
     }
 
@@ -42,11 +52,28 @@ class LoadingControl : UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 
-    public func startLoading(completion: ((Bool) -> Void)? = nil) {
+    public var isActive: Bool = true {
+        didSet {
+            guard isActive != oldValue else { return }
+            let initialized = superview != nil
+            if isActive {
+                startLoading(animated: initialized)
+            }
+            else {
+                endLoading(animated: initialized)
+            }
+        }
+    }
+
+    func startLoading(animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
         self.isUserInteractionEnabled = true
         view.indicator.startAnimating()
-        UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: .calculationModeCubicPaced, animations: {
-            // Background
+        delegate?.onLoading(active: true)
+
+        let duration: TimeInterval = animated ? LoadingControl.AnimationDuration : 0
+
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeCubicPaced, animations: {
+            // Background Alpha
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1) {
                 self.view.background.alpha = 1
             }
@@ -54,12 +81,21 @@ class LoadingControl : UIView {
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
                 self.view.panel.transform = CGAffineTransform(scaleX: 1, y: 1)
             }
+            // Panel Alpha
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25) {
+                self.view.panel.alpha = 1
+            }
         }, completion: completion)
     }
 
-    public func endLoading(completion: ((Bool) -> Void)? = nil) {
-        UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: .calculationModeCubicPaced, animations: {
-            // Background
+    func endLoading(animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
+        let duration: TimeInterval = animated ? LoadingControl.AnimationDuration : 0
+
+        view.background.layer.removeAllAnimations()
+        view.panel.layer.removeAllAnimations()
+
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeCubicPaced, animations: {
+            // Background Alpha
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1) {
                 self.view.background.alpha = 0
             }
@@ -67,10 +103,19 @@ class LoadingControl : UIView {
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
                 self.view.panel.transform = CGAffineTransform(scaleX: 0, y: 0)
             }
+            // Panel Alpha
+            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25) {
+                self.view.panel.alpha = 0
+            }
         }, completion: { result in
+            guard !self.isActive else {
+                completion?(false)
+                return
+            }
             self.isUserInteractionEnabled = false
             self.view.indicator.stopAnimating()
             completion?(result)
+            self.delegate?.onLoading(active: false)
         })
     }
 }

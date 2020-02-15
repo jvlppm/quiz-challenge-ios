@@ -97,7 +97,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwb-pI-JAZ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwb-pI-JAZ">
                                         <rect key="frame" x="16" y="73" width="343" height="48"/>
                                         <color key="backgroundColor" name="accent"/>
                                         <constraints>
@@ -143,7 +143,6 @@
                                 <color key="backgroundColor" name="panelBackground"/>
                                 <constraints>
                                     <constraint firstItem="3Q1-Fv-z6N" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eDQ-Kt-ONT" secondAttribute="trailing" id="0X4-8b-QcW"/>
-                                    <constraint firstItem="sat-7f-qdk" firstAttribute="centerX" secondItem="dwb-pI-JAZ" secondAttribute="centerX" id="561-KR-gPF"/>
                                     <constraint firstItem="7vw-Aa-3V0" firstAttribute="centerX" secondItem="AMJ-Si-F6e" secondAttribute="centerX" id="DaN-Nm-Vtu"/>
                                     <constraint firstItem="eDQ-Kt-ONT" firstAttribute="top" secondItem="AMJ-Si-F6e" secondAttribute="topMargin" id="Jf9-Rs-Eag"/>
                                     <constraint firstItem="sat-7f-qdk" firstAttribute="centerY" secondItem="dwb-pI-JAZ" secondAttribute="centerY" id="ZJz-K4-FJa"/>
@@ -152,7 +151,6 @@
                                     <constraint firstItem="eDQ-Kt-ONT" firstAttribute="leading" secondItem="dwb-pI-JAZ" secondAttribute="leading" id="fHo-ac-iqP"/>
                                     <constraint firstItem="sat-7f-qdk" firstAttribute="height" secondItem="dwb-pI-JAZ" secondAttribute="height" id="gL0-qb-muX"/>
                                     <constraint firstItem="dwb-pI-JAZ" firstAttribute="trailing" secondItem="3Q1-Fv-z6N" secondAttribute="trailing" id="jrl-Wa-M1Y"/>
-                                    <constraint firstItem="sat-7f-qdk" firstAttribute="width" secondItem="dwb-pI-JAZ" secondAttribute="width" id="l3k-na-GGF"/>
                                     <constraint firstItem="dwb-pI-JAZ" firstAttribute="top" secondItem="eDQ-Kt-ONT" secondAttribute="bottom" constant="16" id="m1c-Zk-2eP"/>
                                     <constraint firstItem="3Q1-Fv-z6N" firstAttribute="top" secondItem="AMJ-Si-F6e" secondAttribute="topMargin" id="qcN-KM-hou"/>
                                 </constraints>
@@ -163,7 +161,9 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="AMJ-Si-F6e" secondAttribute="bottom" id="0qt-id-WjL"/>
                             <constraint firstItem="iNI-qX-EXe" firstAttribute="top" secondItem="LWe-tP-a5X" secondAttribute="bottom" constant="8" id="0ti-9t-j0E"/>
+                            <constraint firstItem="sat-7f-qdk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="9Uy-vC-58s"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LWe-tP-a5X" secondAttribute="trailing" constant="16" id="9te-qJ-8g5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sat-7f-qdk" secondAttribute="trailing" constant="16" id="ADD-PO-rFS"/>
                             <constraint firstItem="iNI-qX-EXe" firstAttribute="bottom" secondItem="dwb-pI-JAZ" secondAttribute="bottom" id="Glz-zn-1Vm"/>
                             <constraint firstItem="LWe-tP-a5X" firstAttribute="top" secondItem="TFl-or-Lwi" secondAttribute="bottom" constant="16" id="Ntj-ap-WcP"/>
                             <constraint firstItem="AMJ-Si-F6e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PVT-gb-F4B"/>
@@ -185,6 +185,7 @@
                     </view>
                     <connections>
                         <outlet property="answerEntry" destination="eqc-64-L2q" id="RWA-tn-mqR"/>
+                        <outlet property="answerEntryContainer" destination="LWe-tP-a5X" id="S3o-YI-wei"/>
                         <outlet property="answersCount" destination="eDQ-Kt-ONT" id="ElQ-HS-QWm"/>
                         <outlet property="bottomPanel" destination="AMJ-Si-F6e" id="rtr-Ru-zL1"/>
                         <outlet property="bottomPanelPositionConstraint" destination="oGO-uc-fF2" id="hqN-7G-hWg"/>

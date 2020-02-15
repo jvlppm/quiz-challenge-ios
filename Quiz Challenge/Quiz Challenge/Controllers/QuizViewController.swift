@@ -18,6 +18,7 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var answerEntry: UITextField!
+    @IBOutlet weak var answerEntryContainer: UIView!
     @IBOutlet weak var answersCount: UILabel!
     @IBOutlet weak var timeRemaining: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -30,7 +31,7 @@ class QuizViewController: UIViewController {
         // Do any additional setup after loading the view.
         table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomPanel.frame.height, right: 0)
         table.scrollIndicatorInsets = table.contentInset
-        loadingControl = LoadingControl.create(for: view)
+        loadingControl = LoadingControl.create(for: view, isActive: true, delegate: self)
         keyboardSizeListener = KeyboardSizeListener(self, selector: #selector(onKeyboardUpdate))
         loadGameData()
     }
@@ -48,20 +49,24 @@ class QuizViewController: UIViewController {
 
             self.gameModel.data = data
             self.refresh()
-            self.loadingControl.endLoading()
+            self.loadingControl.isActive = false
         }
     }
 
     @IBAction func start(_ sender: Any) {
         gameModel.start()
-        refresh()
+        UIView.animate(withDuration: 0.3) {
+            self.refresh()
+        }
         answerEntry.becomeFirstResponder()
     }
 
     @IBAction func reset(_ sender: Any) {
         gameModel.reset()
         answerEntry.text = ""
-        refresh()
+        UIView.animate(withDuration: 0.3) {
+            self.refresh()
+        }
     }
 
     func refresh() {
@@ -72,6 +77,9 @@ class QuizViewController: UIViewController {
         self.answerEntry.isEnabled = gameModel.state == .running
         self.startButton.isHidden = gameModel.state != .stopped
         self.resetButton.isHidden = gameModel.state == .stopped
+
+        let showAnswers = !loadingControl.isActive && gameModel.state != .stopped
+        self.table.alpha = showAnswers ? 1 : 0
 
         self.table.reloadData()
     }
@@ -93,6 +101,18 @@ class QuizViewController: UIViewController {
 
         bottomPanelPositionConstraint.constant = height
         view.layoutIfNeeded()
+    }
+}
+
+extension QuizViewController : LoadingControlDelegate {
+    func onLoading(active isLoading: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            self.question.alpha = isLoading ? 0 : 1
+            self.answerEntryContainer.alpha = isLoading ? 0 : 1
+
+            let showAnswers = !isLoading && self.gameModel.state != .stopped
+            self.table.alpha = showAnswers ? 1 : 0
+        }
     }
 }
 
