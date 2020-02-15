@@ -73,7 +73,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMJ-Si-F6e">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMJ-Si-F6e" userLabel="Bottom Panel">
                                 <rect key="frame" x="0.0" y="530" width="375" height="137"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDQ-Kt-ONT">
@@ -104,16 +104,23 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vw-Aa-3V0" userLabel="Bottom Anchor">
+                                        <rect key="frame" x="0.0" y="137" width="375" height="0.0"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" id="9qa-WH-IB9"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" name="panelBackground"/>
                                 <constraints>
                                     <constraint firstItem="3Q1-Fv-z6N" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eDQ-Kt-ONT" secondAttribute="trailing" id="0X4-8b-QcW"/>
-                                    <constraint firstItem="dwb-pI-JAZ" firstAttribute="leading" secondItem="AMJ-Si-F6e" secondAttribute="leadingMargin" id="Bn3-oF-z9s"/>
+                                    <constraint firstItem="7vw-Aa-3V0" firstAttribute="centerX" secondItem="AMJ-Si-F6e" secondAttribute="centerX" id="DaN-Nm-Vtu"/>
                                     <constraint firstItem="eDQ-Kt-ONT" firstAttribute="top" secondItem="AMJ-Si-F6e" secondAttribute="topMargin" id="Jf9-Rs-Eag"/>
                                     <constraint firstItem="dwb-pI-JAZ" firstAttribute="top" secondItem="3Q1-Fv-z6N" secondAttribute="bottom" constant="16" id="ZVQ-uL-tYs"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="dwb-pI-JAZ" secondAttribute="trailing" id="cca-yQ-2z3"/>
-                                    <constraint firstItem="eDQ-Kt-ONT" firstAttribute="leading" secondItem="AMJ-Si-F6e" secondAttribute="leadingMargin" id="fHo-ac-iqP"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="3Q1-Fv-z6N" secondAttribute="trailing" id="jrl-Wa-M1Y"/>
+                                    <constraint firstItem="7vw-Aa-3V0" firstAttribute="width" secondItem="AMJ-Si-F6e" secondAttribute="width" id="c5U-mN-gNP"/>
+                                    <constraint firstItem="eDQ-Kt-ONT" firstAttribute="leading" secondItem="dwb-pI-JAZ" secondAttribute="leading" id="fHo-ac-iqP"/>
+                                    <constraint firstItem="dwb-pI-JAZ" firstAttribute="trailing" secondItem="3Q1-Fv-z6N" secondAttribute="trailing" id="jrl-Wa-M1Y"/>
                                     <constraint firstItem="dwb-pI-JAZ" firstAttribute="top" secondItem="eDQ-Kt-ONT" secondAttribute="bottom" constant="16" id="m1c-Zk-2eP"/>
                                     <constraint firstItem="3Q1-Fv-z6N" firstAttribute="top" secondItem="AMJ-Si-F6e" secondAttribute="topMargin" id="qcN-KM-hou"/>
                                 </constraints>
@@ -127,19 +134,26 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LWe-tP-a5X" secondAttribute="trailing" constant="16" id="9te-qJ-8g5"/>
                             <constraint firstItem="iNI-qX-EXe" firstAttribute="bottom" secondItem="dwb-pI-JAZ" secondAttribute="bottom" id="Glz-zn-1Vm"/>
                             <constraint firstItem="LWe-tP-a5X" firstAttribute="top" secondItem="TFl-or-Lwi" secondAttribute="bottom" constant="16" id="Ntj-ap-WcP"/>
-                            <constraint firstItem="AMJ-Si-F6e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PVT-gb-F4B"/>
+                            <constraint firstItem="AMJ-Si-F6e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PVT-gb-F4B"/>
                             <constraint firstItem="TFl-or-Lwi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="Ph4-bn-KYv"/>
                             <constraint firstItem="TFl-or-Lwi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Y0t-JU-Tvd"/>
                             <constraint firstItem="TFl-or-Lwi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Zaw-px-W0b"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dwb-pI-JAZ" secondAttribute="bottom" constant="16" id="ZvM-Q8-3eA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AMJ-Si-F6e" secondAttribute="trailing" id="akh-6x-8a6"/>
+                            <constraint firstItem="7vw-Aa-3V0" firstAttribute="top" secondItem="dwb-pI-JAZ" secondAttribute="bottom" constant="16" id="ZvM-Q8-3eA"/>
+                            <constraint firstItem="dwb-pI-JAZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="afB-ua-VdF"/>
+                            <constraint firstAttribute="trailing" secondItem="AMJ-Si-F6e" secondAttribute="trailing" id="akh-6x-8a6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iNI-qX-EXe" secondAttribute="trailing" constant="16" id="ex1-CT-AMz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dwb-pI-JAZ" secondAttribute="trailing" constant="16" id="fey-M7-mOa"/>
+                            <constraint firstItem="AMJ-Si-F6e" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TFl-or-Lwi" secondAttribute="bottom" constant="80" id="i7r-4e-zSR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7vw-Aa-3V0" secondAttribute="bottom" id="oGO-uc-fF2"/>
                             <constraint firstItem="iNI-qX-EXe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ppk-2K-F9s"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TFl-or-Lwi" secondAttribute="trailing" constant="16" id="t3G-GV-c8r"/>
+                            <constraint firstAttribute="trailing" secondItem="TFl-or-Lwi" secondAttribute="trailing" constant="16" id="t3G-GV-c8r"/>
                             <constraint firstItem="LWe-tP-a5X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wku-q3-9RM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="bottomPanelPositionConstraint" destination="oGO-uc-fF2" id="hqN-7G-hWg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
