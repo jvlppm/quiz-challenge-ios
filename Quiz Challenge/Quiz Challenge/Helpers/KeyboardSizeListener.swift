@@ -19,14 +19,22 @@ class KeyboardSizeListener : NSObject {
         self.selector = selector
         super.init()
 
+        self.listenToKeyboardEvents()
+    }
+
+    func listenToKeyboardEvents() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(onKeyboardChangeNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(onKeyboardChangeNotification), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 
+    func stopListeningToKeyboardEvents() {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     @objc func onKeyboardChangeNotification(notification: Notification) {
         guard let view = controller?.view else {
-            NotificationCenter.default.removeObserver(self)
+            stopListeningToKeyboardEvents()
             return
         }
 

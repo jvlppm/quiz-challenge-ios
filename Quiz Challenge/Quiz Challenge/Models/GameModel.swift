@@ -22,7 +22,7 @@ protocol GameModelDelegate {
 }
 
 class GameModel {
-    static let GameDuration: TimeInterval = 300
+    static let GameDuration: TimeInterval = 5 * 60
 
     public var data: GameData? {
         didSet {
@@ -46,7 +46,6 @@ class GameModel {
     private(set) var lastAnswers = [String]()
 
     var playerWon: Bool {
-        guard possibleAnswers.count > 0 else { return false }
         return playerAnswers.count >= possibleAnswers.count
     }
 

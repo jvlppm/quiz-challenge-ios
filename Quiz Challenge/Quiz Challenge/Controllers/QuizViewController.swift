@@ -127,10 +127,9 @@ extension QuizViewController : GameModelDelegate {
         loadingTimer?.invalidate()
 
         guard game.state == .finished else {
+            answerEntry.text = ""
             return
         }
-
-        answerEntry.text = ""
 
         if game.playerWon {
             showPlayerWon()
@@ -171,10 +170,11 @@ extension QuizViewController : GameModelDelegate {
 extension QuizViewController : LoadingControlDelegate {
     func onLoading(active isLoading: Bool) {
         UIView.animate(withDuration: 0.3) {
-            self.question.alpha = isLoading ? 0 : 1
-            self.answerEntryContainer.alpha = isLoading ? 0 : 1
+            let showElements = !isLoading
+            let showAnswers = showElements && self.gameModel.state != .stopped
 
-            let showAnswers = !isLoading && self.gameModel.state != .stopped
+            self.question.alpha = showElements ? 1 : 0
+            self.answerEntryContainer.alpha = showElements ? 1 : 0
             self.table.alpha = showAnswers ? 1 : 0
         }
     }
@@ -186,9 +186,8 @@ extension QuizViewController : UITextFieldDelegate {
         let inputText = sourceText.replacingCharacters(in: Range(range, in: sourceText)!, with: string)
 
         table.beginUpdates()
-        defer { table.endUpdates() }
 
-        let lastRow = IndexPath(row: gameModel.lastAnswers.count, section: 0)
+        let lastRowPosition = IndexPath(row: gameModel.lastAnswers.count, section: 0)
 
         let response = gameModel.check(answer: inputText)
         if response != .correct {
@@ -196,11 +195,18 @@ extension QuizViewController : UITextFieldDelegate {
             return true
         }
 
+        table.insertRows(at: [lastRowPosition], with: .fade)
+        table.endUpdates()
+
+        onCorrectAnswer(at: lastRowPosition)
+        return false
+    }
+
+    func onCorrectAnswer(at position: IndexPath) {
         reloadAnswersCount()
         answerEntry.text = ""
-        table.insertRows(at: [lastRow], with: .fade)
-        table.scrollToRow(at: lastRow, at: .bottom, animated: true)
-        return false
+
+        table.scrollToRow(at: position, at: .bottom, animated: true)
     }
 }
 
