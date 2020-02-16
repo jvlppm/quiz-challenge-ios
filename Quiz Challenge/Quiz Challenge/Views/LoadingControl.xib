@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingControl" customModule="Quiz_Challenge" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="oKT-TF-ixS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoadingControlView" customModule="Quiz_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b59-np-SrK" userLabel="Background">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="910"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" name="loadingBackground"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Faf-eb-13U" userLabel="Panel">
+                    <rect key="frame" x="140.5" y="386" width="133" height="102"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="EEw-iG-gxE">
+                            <rect key="frame" x="48" y="16" width="37" height="37"/>
+                            <color key="color" name="loadingForeground"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahU-Of-Ecc">
+                            <rect key="frame" x="32" y="69" width="69" height="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <color key="textColor" name="loadingForeground"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="loadingPanel"/>
+                    <constraints>
+                        <constraint firstItem="EEw-iG-gxE" firstAttribute="top" secondItem="Faf-eb-13U" secondAttribute="top" constant="16" id="4iJ-ft-fzo"/>
+                        <constraint firstItem="ahU-Of-Ecc" firstAttribute="leading" secondItem="Faf-eb-13U" secondAttribute="leading" constant="32" id="Iya-6e-XrT"/>
+                        <constraint firstAttribute="trailing" secondItem="ahU-Of-Ecc" secondAttribute="trailing" constant="32" id="L7m-IV-zha"/>
+                        <constraint firstAttribute="bottom" secondItem="ahU-Of-Ecc" secondAttribute="bottom" constant="16" id="Mnj-jn-iTp"/>
+                        <constraint firstItem="ahU-Of-Ecc" firstAttribute="top" secondItem="EEw-iG-gxE" secondAttribute="bottom" constant="16" id="QBw-IY-rDn"/>
+                        <constraint firstItem="EEw-iG-gxE" firstAttribute="centerX" secondItem="Faf-eb-13U" secondAttribute="centerX" id="ary-HF-xKK"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Faf-eb-13U" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-16" id="ItF-y9-v30"/>
+                <constraint firstItem="Faf-eb-13U" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="qST-Rh-hwP"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="background" destination="b59-np-SrK" id="5Yx-pp-eHg"/>
+                <outlet property="indicator" destination="EEw-iG-gxE" id="DTG-W6-ym4"/>
+                <outlet property="panel" destination="Faf-eb-13U" id="gL1-dl-hbK"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="100.44642857142857"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="loadingBackground">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="loadingForeground">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="loadingPanel">
+            <color red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
