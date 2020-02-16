@@ -10,26 +10,50 @@ import XCTest
 
 class Quiz_ChallengeUITests: XCTestCase {
 
+    var app: XCUIApplication!
+    var answerField: XCUIElement!
+    var startButton: XCUIElement!
+    var resetButton: XCUIElement!
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        app = XCUIApplication()
+        app.launch()
+        answerField = app.textFields["Insert Word"]
+        startButton = app.buttons["Start"]
+        resetButton = app.buttons["Reset"]
         continueAfterFailure = false
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        startButton.tap()
+
+        XCUIDevice.shared.orientation = .portrait
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testStartGameFocusAnswer() {
+        XCTAssert(answerField.value(forKey: "hasKeyboardFocus") as? Bool ?? false)
+    }
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAnswerAcceptedOnLastChar() {
+        answerField.typeText("in")
+        XCTAssert(answerField.value as? String ?? nil == "in")
+
+        answerField.typeText("t")
+        XCTAssert(answerField.value as? String == answerField.placeholderValue)
+    }
+
+    func testAnswerIsListed() {
+        answerField.typeText("int")
+        XCTAssert(app.tables.staticTexts["int"].exists)
+    }
+
+    func testResetClearAnswers() {
+        answerField.typeText("int")
+        resetButton.tap()
+        XCTAssert(!app.tables.staticTexts["int"].exists)
     }
 
     func testLaunchPerformance() {
