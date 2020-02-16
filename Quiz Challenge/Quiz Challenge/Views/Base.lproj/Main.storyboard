@@ -53,14 +53,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="response" id="Ove-gl-c47" customClass="ResponseTableViewCell" customModule="Quiz_Challenge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="45"/>
+                                        <rect key="frame" x="0.0" y="28" width="343" height="45.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ove-gl-c47" id="p6I-M2-g2h">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="45.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Final" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nec-hE-gDT">
-                                                    <rect key="frame" x="12" y="12" width="319" height="21"/>
+                                                    <rect key="frame" x="12" y="12" width="319" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -85,6 +85,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMJ-Si-F6e" userLabel="Bottom Panel">
                                 <rect key="frame" x="0.0" y="530" width="375" height="137"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbK-2N-zqW" userLabel="Top Border">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                        <color key="backgroundColor" name="panelBorder"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="WyP-7s-Hni"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDQ-Kt-ONT">
                                         <rect key="frame" x="16" y="16" width="103.5" height="41"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
@@ -143,8 +150,11 @@
                                 <color key="backgroundColor" name="panelBackground"/>
                                 <constraints>
                                     <constraint firstItem="3Q1-Fv-z6N" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eDQ-Kt-ONT" secondAttribute="trailing" id="0X4-8b-QcW"/>
+                                    <constraint firstItem="cbK-2N-zqW" firstAttribute="leading" secondItem="AMJ-Si-F6e" secondAttribute="leading" id="6uM-W6-fyM"/>
+                                    <constraint firstAttribute="trailing" secondItem="cbK-2N-zqW" secondAttribute="trailing" id="9hv-xn-iFM"/>
                                     <constraint firstItem="7vw-Aa-3V0" firstAttribute="centerX" secondItem="AMJ-Si-F6e" secondAttribute="centerX" id="DaN-Nm-Vtu"/>
                                     <constraint firstItem="eDQ-Kt-ONT" firstAttribute="top" secondItem="AMJ-Si-F6e" secondAttribute="topMargin" id="Jf9-Rs-Eag"/>
+                                    <constraint firstItem="cbK-2N-zqW" firstAttribute="top" secondItem="AMJ-Si-F6e" secondAttribute="top" id="K1u-1H-eO8"/>
                                     <constraint firstItem="sat-7f-qdk" firstAttribute="centerY" secondItem="dwb-pI-JAZ" secondAttribute="centerY" id="ZJz-K4-FJa"/>
                                     <constraint firstItem="dwb-pI-JAZ" firstAttribute="top" secondItem="3Q1-Fv-z6N" secondAttribute="bottom" constant="16" id="ZVQ-uL-tYs"/>
                                     <constraint firstItem="7vw-Aa-3V0" firstAttribute="width" secondItem="AMJ-Si-F6e" secondAttribute="width" id="c5U-mN-gNP"/>
@@ -216,6 +226,9 @@
         </namedColor>
         <namedColor name="panelBackground">
             <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="panelBorder">
+            <color red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
