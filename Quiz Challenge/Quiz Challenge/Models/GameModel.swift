@@ -16,6 +16,11 @@ enum AnswerStatus {
     case unknown, repeated, correct
 }
 
+protocol GameModelDelegate {
+    func onStart(game: GameModel)
+    func onStop(game: GameModel)
+}
+
 class GameModel {
     static let GameDuration: TimeInterval = 300
 
@@ -28,6 +33,8 @@ class GameModel {
             self.reset()
         }
     }
+
+    public var delegate: GameModelDelegate?
 
     private(set) var question = ""
     private(set) var possibleAnswers = Set<String>()
@@ -45,6 +52,7 @@ class GameModel {
 
     public func start() {
         self.state = .running
+        delegate?.onStart(game: self)
     }
 
     public func reset() {
@@ -52,6 +60,7 @@ class GameModel {
         self.remainingTime = GameModel.GameDuration
         self.playerAnswers.removeAll()
         self.lastAnswers = []
+        delegate?.onStop(game: self)
     }
 
     public func elapse(time: TimeInterval) {
@@ -93,5 +102,6 @@ class GameModel {
 
     private func finish() {
         state = .finished
+        delegate?.onStop(game: self)
     }
 }

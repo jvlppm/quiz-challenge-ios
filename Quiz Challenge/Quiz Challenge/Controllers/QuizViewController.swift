@@ -25,14 +25,18 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var bottomPanel: UIView!
 
+    var loadingTimer: Timer!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomPanel.frame.height, right: 0)
         table.scrollIndicatorInsets = table.contentInset
+
         loadingControl = LoadingControl.create(for: view, isActive: true, delegate: self)
         keyboardSizeListener = KeyboardSizeListener(self, selector: #selector(onKeyboardUpdate))
+
+        gameModel.delegate = self
         loadGameData()
     }
 
@@ -54,19 +58,11 @@ class QuizViewController: UIViewController {
     }
 
     @IBAction func start(_ sender: Any) {
-        gameModel.start()
-        UIView.animate(withDuration: 0.3) {
-            self.refresh()
-        }
-        answerEntry.becomeFirstResponder()
+        self.gameModel.start()
     }
 
     @IBAction func reset(_ sender: Any) {
-        gameModel.reset()
-        answerEntry.text = ""
-        UIView.animate(withDuration: 0.3) {
-            self.refresh()
-        }
+        self.gameModel.reset()
     }
 
     func refresh() {
@@ -98,9 +94,77 @@ class QuizViewController: UIViewController {
     }
 
     @objc func onKeyboardUpdate(height: CGFloat) {
-
         bottomPanelPositionConstraint.constant = height
         view.layoutIfNeeded()
+    }
+}
+
+extension QuizViewController : GameModelDelegate {
+    func onStart(game: GameModel) {
+
+        UIView.animate(withDuration: 0.3) {
+            self.refresh()
+        }
+        answerEntry.becomeFirstResponder()
+
+        loadingTimer = Timer.scheduledTimer(timeInterval: 1,
+            target: self,
+            selector: #selector(tickGameTimer),
+            userInfo: nil,
+            repeats: true)
+    }
+
+    @objc func tickGameTimer() {
+        gameModel.elapse(time: 1)
+        reloadTimerCount()
+    }
+
+    func onStop(game: GameModel) {
+        UIView.animate(withDuration: 0.3) {
+            self.refresh()
+        }
+
+        loadingTimer?.invalidate()
+
+        guard game.state == .finished else {
+            return
+        }
+
+        answerEntry.text = ""
+
+        if game.playerWon {
+            showPlayerWon()
+        }
+        else {
+            showPlayerLost()
+        }
+    }
+
+    func showPlayerWon() {
+        let alert = UIAlertController(
+            title: "Congratulations",
+            message: "Good job! You found all the answers on time. Keep up the great work.",
+            preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Play Again", style: .default, handler: self.onRestart))
+
+        self.present(alert, animated: true)
+    }
+
+    func showPlayerLost() {
+        let alert = UIAlertController(
+            title: "Time finished",
+            message: "Sorry, time is up! You got \(gameModel.playerAnswers.count) out of \(gameModel.possibleAnswers.count) answers.",
+            preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: self.onRestart))
+
+        self.present(alert, animated: true)
+    }
+
+    func onRestart(action: UIAlertAction) {
+        self.gameModel.reset()
+        self.gameModel.start()
     }
 }
 
