@@ -188,14 +188,18 @@ extension QuizViewController : UITextFieldDelegate {
         table.beginUpdates()
         defer { table.endUpdates() }
 
+        let lastRow = IndexPath(row: gameModel.lastAnswers.count, section: 0)
+
         let response = gameModel.check(answer: inputText)
         if response != .correct {
+            table.endUpdates()
             return true
         }
 
         reloadAnswersCount()
         answerEntry.text = ""
-        table.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
+        table.insertRows(at: [lastRow], with: .fade)
+        table.scrollToRow(at: lastRow, at: .bottom, animated: true)
         return false
     }
 }

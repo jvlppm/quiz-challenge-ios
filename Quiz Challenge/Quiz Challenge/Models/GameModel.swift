@@ -91,7 +91,7 @@ class GameModel {
             return .repeated
         }
 
-        lastAnswers.insert(answer, at: 0)
+        lastAnswers.append(answer)
 
         if playerAnswers.count >= possibleAnswers.count {
             finish()
