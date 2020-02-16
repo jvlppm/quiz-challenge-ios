@@ -54,7 +54,6 @@ class LoadingControl : UIView {
 
     public var isActive: Bool = true {
         didSet {
-            guard isActive != oldValue else { return }
             let initialized = superview != nil
             if isActive {
                 startLoading(animated: initialized)
@@ -79,7 +78,7 @@ class LoadingControl : UIView {
             }
             // Panel Size
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
-                self.view.panel.transform = CGAffineTransform(scaleX: 1, y: 1)
+                self.view.panel.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
             }
             // Panel Alpha
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25) {

@@ -24,37 +24,37 @@
                     <color key="backgroundColor" name="loadingBackground"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Faf-eb-13U" userLabel="Panel">
-                    <rect key="frame" x="119" y="388" width="176" height="130"/>
+                    <rect key="frame" x="140.5" y="386" width="133" height="102"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="EEw-iG-gxE">
-                            <rect key="frame" x="69.5" y="24" width="37" height="37"/>
+                            <rect key="frame" x="48" y="16" width="37" height="37"/>
                             <color key="color" name="loadingForeground"/>
                         </activityIndicatorView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahU-Of-Ecc">
-                            <rect key="frame" x="48" y="85" width="80" height="21"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <rect key="frame" x="32" y="69" width="69" height="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                             <color key="textColor" name="loadingForeground"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" name="loadingPanel"/>
                     <constraints>
-                        <constraint firstItem="EEw-iG-gxE" firstAttribute="top" secondItem="Faf-eb-13U" secondAttribute="top" constant="24" id="4iJ-ft-fzo"/>
-                        <constraint firstItem="ahU-Of-Ecc" firstAttribute="leading" secondItem="Faf-eb-13U" secondAttribute="leading" constant="48" id="Iya-6e-XrT"/>
-                        <constraint firstAttribute="trailing" secondItem="ahU-Of-Ecc" secondAttribute="trailing" constant="48" id="L7m-IV-zha"/>
-                        <constraint firstAttribute="bottom" secondItem="ahU-Of-Ecc" secondAttribute="bottom" constant="24" id="Mnj-jn-iTp"/>
-                        <constraint firstItem="ahU-Of-Ecc" firstAttribute="top" secondItem="EEw-iG-gxE" secondAttribute="bottom" constant="24" id="QBw-IY-rDn"/>
+                        <constraint firstItem="EEw-iG-gxE" firstAttribute="top" secondItem="Faf-eb-13U" secondAttribute="top" constant="16" id="4iJ-ft-fzo"/>
+                        <constraint firstItem="ahU-Of-Ecc" firstAttribute="leading" secondItem="Faf-eb-13U" secondAttribute="leading" constant="32" id="Iya-6e-XrT"/>
+                        <constraint firstAttribute="trailing" secondItem="ahU-Of-Ecc" secondAttribute="trailing" constant="32" id="L7m-IV-zha"/>
+                        <constraint firstAttribute="bottom" secondItem="ahU-Of-Ecc" secondAttribute="bottom" constant="16" id="Mnj-jn-iTp"/>
+                        <constraint firstItem="ahU-Of-Ecc" firstAttribute="top" secondItem="EEw-iG-gxE" secondAttribute="bottom" constant="16" id="QBw-IY-rDn"/>
                         <constraint firstItem="EEw-iG-gxE" firstAttribute="centerX" secondItem="Faf-eb-13U" secondAttribute="centerX" id="ary-HF-xKK"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="16"/>
+                            <integer key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <constraints>
-                <constraint firstItem="Faf-eb-13U" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="ItF-y9-v30"/>
+                <constraint firstItem="Faf-eb-13U" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-16" id="ItF-y9-v30"/>
                 <constraint firstItem="Faf-eb-13U" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="qST-Rh-hwP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
