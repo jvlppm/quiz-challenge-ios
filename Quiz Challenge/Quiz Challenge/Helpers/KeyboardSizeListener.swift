@@ -12,6 +12,8 @@ class KeyboardSizeListener : NSObject {
     weak var controller: UIViewController!
     let selector: Selector
 
+    var keyboardHeight: CGFloat = 0
+
     init(_ controller: UIViewController, selector: Selector) {
         self.controller = controller
         self.selector = selector
@@ -35,9 +37,19 @@ class KeyboardSizeListener : NSObject {
             return
         }
 
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-        let keyboardHeight = keyboardViewEndFrame.height - view.safeAreaInsets.bottom
-
-        controller.perform(selector, with: keyboardHeight)
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            self.keyboardHeight = 0
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.3)
+                {
+                    self.controller?.perform(self.selector, with: 0)
+                }
+            }
+        }
+        else {
+            let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+            self.keyboardHeight = keyboardViewEndFrame.height - view.safeAreaInsets.bottom
+            self.controller?.perform(self.selector, with: self.keyboardHeight)
+        }
     }
 }
